@@ -1,10 +1,10 @@
 blender
 cooker
 glass
-oven 
-plate 
-sink 
-spoon 
+oven
+plate
+sink
+spoon
 toaster
-fork 
+fork
 microwave oven

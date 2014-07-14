@@ -3,6 +3,8 @@ package app;
 import java.io.IOException;
 import java.util.*;
 
+import app.models.Word;
+
 public class Words {
 	
 	/**
@@ -12,7 +14,7 @@ public class Words {
 	 * @return
 	 * @throws Exception 
 	 */
-	public int generateBoard(List<String> words, int boardSize) throws Exception {
+	public int generateBoard(List<Word> words, int boardSize) throws Exception {
 		if(boardSize <= 0)
 			throw new Exception();
 		return 1;
@@ -21,13 +23,13 @@ public class Words {
 	/**
 	 * Funkcja zwracająca zbiór niepowtarzających się znaków 
 	 * tworzona na podstawie listy słów.
-	 * @param words lista słów
+	 * @param list lista słów
 	 * @return zbiór niepowtarzjącyc się znaków (bez spacji)
 	 */
-	public Set<Character> tokenize(List<String> words) {
+	public Set<Character> tokenize(List<Word> list) {
 		Set<Character> result = new HashSet<Character>();
-		for(String word: words){
-			for(Character c: word.toCharArray()) {
+		for(Word word: list){
+			for(Character c: word.getChars()) {
 				if (c != ' ')
 					result.add(c);
 			}

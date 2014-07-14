@@ -1,25 +1,25 @@
 package app;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import app.Words;
+import app.models.Word;
+import app.sources.words.File;
 
 public class Main {
-	private static ArrayList<String> arrayOfWords;
+	private static List<Word> arrayOfWords;
+	
+	private static boolean check(Word word) {
+		for(Word w: arrayOfWords)
+			if(w.getWord().equals(word.getWord()))
+				return true;
+		return false;
+	}
 	
 	public static void main(String[] args) {
-		arrayOfWords = new ArrayList<String>(10);
-		arrayOfWords.add("blender");
-		arrayOfWords.add("cooker");
-		arrayOfWords.add("glass");
-		arrayOfWords.add("oven");
-		arrayOfWords.add("plate");
-		arrayOfWords.add("sink");
-		arrayOfWords.add("spoon");
-		arrayOfWords.add("toaster");
-		arrayOfWords.add("fork");
-		arrayOfWords.add("microwave oven");
+		File source = new File();
+		arrayOfWords = source.getWords();
 		Words words = new Words();
 		System.out.println(words.tokenize(arrayOfWords));
 		System.out.println(words.tokenize(arrayOfWords).size());
@@ -31,7 +31,7 @@ public class Main {
 		do
 		{
 			word = scan.next();
-			if(arrayOfWords.contains(word))
+			if(check(new Word(word)))
 				points++;
 			System.out.println("Suma zgromadzonych pkt: " + points);
 			if(points == arrayOfWords.size()) {

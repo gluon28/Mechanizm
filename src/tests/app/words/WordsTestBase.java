@@ -5,18 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.Words;
+import app.models.Word;
+import app.sources.words.File;
 import junit.framework.TestCase;
 
 public class WordsTestBase extends TestCase {
-	protected List<String> arrayOfWords;
+	protected List<Word> arrayOfWords;
 	protected Words words; 
 	
 	@Override
 	public void setUp() {
 		words = new Words();
-		arrayOfWords = Arrays.asList(
-			"blender", "cooker", "glass", "ovzen", 
-			"plate", "sink", "spoon", "toaster", "fork", "microwave oven"
-		);
+		File source = new File();
+		arrayOfWords = source.getWords();
 	}
 }
